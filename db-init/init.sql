@@ -12,6 +12,16 @@ CREATE TABLE IF NOT EXISTS sites (
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS contacto (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    telefono VARCHAR(20),
+    mensaje TEXT NOT NULL,
+    enviado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 INSERT INTO sites (
     nombre,
     descripcion,
