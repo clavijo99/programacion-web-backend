@@ -55,3 +55,23 @@ exports.createSite = async (req, res) => {
     res.status(500).json({ mensaje: 'Error interno del servidor' });
   }
 };
+
+// requests, res response
+exports.siteDetail = async (req, res) => {
+  console.log('siteDetail');
+  try{
+    const { id } = req.params;
+
+    const site = await sitesService.detailSite(id);
+
+    if (!site) {
+      return res.status(404).json({ message: 'Site not found' });
+    }
+
+    res.json(site).status(200);
+
+  } catch (error) {
+    console.error('Error fetching site detail:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
